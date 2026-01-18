@@ -1,5 +1,5 @@
--- easyHUDv1.0 - 玩家状态显示系统
--- easyHUDv1.0 - Player Status Display System
+-- easyHUDv1.1 - 玩家状态显示系统
+-- easyHUDv1.1 - Player Status Display System
 -- License:MIT
 -- Author:OvOla2
 
@@ -70,8 +70,9 @@ end
 local function updateAbsorption()
     if not player:isLoaded() then return end
 
+    local maxHealth = player:getMaxHealth()
     local absorption = player:getAbsorptionAmount()  -- 伤害吸收值 / Absorption amount
-    local absorptionPercent = math.min(absorption / 20.0, 1.0)  -- 伤害吸收百分比 / Absorption percentage
+    local absorptionPercent = math.min(absorption / maxHealth, 1.0)  -- 伤害吸收百分比 / Absorption percentage
 
     if models.model.Hud.absorption_foreground then
         models.model.Hud.absorption_foreground:setScale(absorptionPercent, 1, 1)
